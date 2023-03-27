@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # Lock or Unlock via a comment (ex: .lock or .unlock)
-      - uses: github/lock@v2.0.0
+      - uses: github/lock@v1.3.0
         id: lock
     #    with:
         #  github_token: ${{ github.token }}
