@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # Unlock
-      - uses: github/lock@vX.X.X
+      - uses: github/lock@v2.0.0
         id: lock
         with:
           mode: "unlock"
