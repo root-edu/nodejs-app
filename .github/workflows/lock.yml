@@ -1,0 +1,19 @@
+name: lock-or-unlock
+
+on:
+  issue_comment:
+    types: [created]
+
+permissions:
+  pull-requests: write
+  contents: write
+
+jobs:
+  lock-or-unlock:
+    runs-on: ubuntu-latest
+    steps:
+      # Lock or Unlock via a comment (ex: .lock or .unlock)
+      - uses: github/lock@v2.0.0
+        id: lock
+        with:
+          github_token: ${{ secrets.GH_TOKEN }}
