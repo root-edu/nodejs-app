@@ -13,5 +13,5 @@ jobs:
       # Lock or Unlock via a comment (ex: .lock or .unlock)
       - uses: github/lock@v2.0.0
         id: lock
-        with:
+    #    with:
         #  github_token: ${{ github.token }}
