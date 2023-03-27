@@ -14,4 +14,4 @@ jobs:
       - uses: github/lock@v2.0.0
         id: lock
         with:
-          github_token: ${{ github.token }}
+        #  github_token: ${{ github.token }}
