@@ -1,19 +1,30 @@
-name: lock-or-unlock
+name: lock-dispatch
 
 on:
-  issue_comment:
-    types: [created]
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: 'Reason for claiming the deployment lock'
+        required: false
+      environment:
+        description: 'The environment to claim a lock for (production, staging, etc) - global is supported to claim the special global lock)'
+        required: true
+        default: 'production'
+      mode:
+        description: 'The mode to use: check, lock, unlock'
+        required: true
+        default: 'lock'
 
-permissions: write-all
+permissions:
+  contents: write
 
 jobs:
-  lock-or-unlock:
+  lock:
     runs-on: ubuntu-latest
     steps:
-      # Lock or Unlock via a comment (ex: .lock or .unlock)
-      - uses: github/lock@v1.3.0
+      - uses: github/lock@vX.X.X
         id: lock
         with:
-          mode: lock
-    #    with:
-        #  github_token: ${{ github.token }}
+          mode: ${{ github.event.inputs.mode }}
+          reason: ${{ github.event.inputs.reason }}
+          environment: ${{ github.event.inputs.environment }}
